@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('components/home');
-})->name('home');
+Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/galery/{full_image}', [MainController::class, 'show']);
 
 Route::get('/about', function () {
     return view('components/about');
