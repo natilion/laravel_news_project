@@ -15,6 +15,7 @@
                 <img class="logo" src="{{ asset('images/logo.png') }}" alt="Логотип">
             </a>
             <nav>
+                <a href="/articles/show">Статьи</a>
                 <a href="{{ route('about') }}">О нас</a>
                 <a href="{{ route('contacts') }}">Контакты</a>
                 <a href="/signup">Регистрация</a>
