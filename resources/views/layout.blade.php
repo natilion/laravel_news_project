@@ -16,7 +16,9 @@
             </a>
             <nav>
                 <a href="/article">Статьи</a>
-                <a href="/article/create">Написать статью</a>
+                @can('article')
+                    <a href="/article/create">Написать статью</a>
+                @endcan 
 
                 <a href="{{ route('about') }}">О нас</a>
                 <a href="{{ route('contacts') }}">Контакты</a>

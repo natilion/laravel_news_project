@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,12 @@ Route::get('/auth/login', [AuthController::class, 'login'])->name('login');
 Route::post('/auth/signIn', [AuthController::class, 'customLogin']);
 Route::get('/auth/logout', [AuthController::class, 'logout']);
 
+
+Route::post('/article/{article}/comments', [CommentController::class, 'store'])
+    ->middleware('auth:sanctum')->name('comments.store');
+
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])
+    ->middleware('auth:sanctum')->name('comments.destroy');
 
 
 Route::get('/', [MainController::class, 'index'])->name('home');

@@ -590,3 +590,144 @@ footer {
     width: 18px;
     height: 18px;
 }
+
+/*COMMENTS*/
+
+.article_card--full {
+    min-height: auto;
+}
+
+.article_card--full .article_desc {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    background: transparent;
+    padding: 0;
+    margin-top: 16px;
+}
+
+.article_card--full:hover {
+    transform: none;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.comments_section {
+    margin-top: 32px;
+}
+
+.comments_card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.comments_title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #111111;
+}
+
+.comments_form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.comments_form_group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.comments_form_group label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222222;
+}
+
+.comments_form_group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #d3d3d3;
+    border-radius: 14px;
+    background: #f8f8f8;
+    font-size: 15px;
+    color: #111111;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    resize: vertical;
+}
+
+.comments_form_group textarea:focus {
+    background: #ffffff;
+    border-color: #222222;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.comments_list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.comment_item {
+    padding: 20px;
+    background: #fafafa;
+    border: 1px solid #ececec;
+    border-radius: 16px;
+}
+
+.comment_head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.comment_author {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 2px;
+}
+
+.comment_date {
+    font-size: 14px;
+    color: #6a6a6a;
+    margin-bottom: 0;
+}
+
+.comment_text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333333;
+    margin-bottom: 0;
+    white-space: pre-line;
+}
+
+.comments_empty {
+    color: #666666;
+    font-size: 16px;
+}
+
+.comments_success {
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #f1f8f1;
+    border: 1px solid #cfe7cf;
+    color: #1f5f1f;
+}
+
+.comments_error {
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #fff3f3;
+    border: 1px solid #f0caca;
+    color: #8a1f1f;
+}
