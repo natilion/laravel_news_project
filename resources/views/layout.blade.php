@@ -21,8 +21,13 @@
                 <a href="{{ route('about') }}">О нас</a>
                 <a href="{{ route('contacts') }}">Контакты</a>
 
-                <a href="/signup">Регистрация</a>
-                <a href="signin">Вход</a>
+                @guest
+                    <a href="/auth/create">Регистрация</a>
+                    <a href="/auth/login">Вход</a>
+                @endguest
+                @auth
+                    <a href="/auth/logout">Выход</a>
+                @endauth
             </nav>
         </div>
     </header>

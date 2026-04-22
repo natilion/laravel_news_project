@@ -17,10 +17,19 @@ use App\Http\Controllers\ArticleController;
 */
 
 // Route::get('/articles/show', [ArticleController::class, 'index']);
-Route::resource('article', ArticleController::class);
+Route::resource('article', ArticleController::class)->middleware('auth:sanctum');
 
-Route::get('/signup', [AuthController::class, 'create']);
-Route::post('/auth/login', [AuthController::class, 'registration']);
+// Route::get('/signup', [AuthController::class, 'create']);
+// Route::post('/auth/login', [AuthController::class, 'registration']);
+
+
+Route::get('/auth/create', [AuthController::class, 'create']);
+Route::post('/auth/registration', [AuthController::class, 'registration']);
+Route::get('/auth/login', [AuthController::class, 'login'])->name('login');
+Route::post('/auth/signIn', [AuthController::class, 'customLogin']);
+Route::get('/auth/logout', [AuthController::class, 'logout']);
+
+
 
 Route::get('/', [MainController::class, 'index'])->name('home');
 
