@@ -64,7 +64,13 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        $article->load(['comments.user']);
+        $article->load([
+            'comments' => function ($query) {
+                $query->where('is_approved', true)
+                    ->latest()
+                    ->with('user');
+            }
+        ]);
         return view('articles/showOne', ['article' => $article]);
     }
 

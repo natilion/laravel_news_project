@@ -31,6 +31,11 @@
                     <a href="/auth/logout">Выход</a>
                 @endauth
             </nav>
+            <nav>
+                    @can('article')
+                        <a href="{{ route('comments.moderation') }}">Меню модера</a>
+                    @endcan
+                </nav>
         </div>
     </header>
 

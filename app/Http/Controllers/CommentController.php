@@ -20,10 +20,32 @@ class CommentController extends Controller
         $comment->text = $request->text;
         $comment->article_id = $article->id;
         $comment->user_id = Auth::id();
+        $comment->is_approved = false;
         $comment->save();
 
-        return redirect()->route('article.show', ['article' => $article->id])
-            ->with('success', 'Комментарий добавлен');
+        return redirect()->route('article.show', ['article' => $article->id])->with('success', 'Комментарий ждет одобрения модерации');
+    }
+
+    public function moderation()
+    {
+        Gate::authorize('article');
+
+        $comments = Comment::where('is_approved', false)
+            ->with(['article', 'user'])
+            ->latest()
+            ->get();
+
+        return view('comments/moderation', ['comments' => $comments]);
+    }
+
+    public function approve(Comment $comment)
+    {
+        Gate::authorize('article');
+
+        $comment->is_approved = true;
+        $comment->save();
+
+        return redirect()->route('comments.moderation')->with('success', 'Комментарий одобрен');
     }
 
     public function destroy(Comment $comment)
@@ -33,7 +55,6 @@ class CommentController extends Controller
         $articleId = $comment->article_id;
         $comment->delete();
 
-        return redirect()->route('article.show', ['article' => $articleId])
-            ->with('success', 'Комментарий удалён');
+        return redirect()->route('comments.moderation')->with('success', 'Комментарий удалён');
     }
 }
